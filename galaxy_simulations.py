@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[83]:
+# In[88]:
 
 
 # ----------------------------------------------- # 
@@ -18,7 +18,7 @@ import cmasher as cmr
 import pandas as pd
 
 
-# In[84]:
+# In[89]:
 
 
 def generate_scene(n_sources=4, size_x=120, size_y=90, s_n=200):
@@ -126,6 +126,7 @@ def generate_scene(n_sources=4, size_x=120, size_y=90, s_n=200):
 
     # add location to storage vectors
     centers[-1] = [b.center.y, b.center.x]
+    print(f'Galaxy {idx+1} at center = {b.center.x,b.center.y}')
 
     # shape alteration
     g1 = np.random.choice(g1_vec)          
@@ -153,7 +154,7 @@ def generate_scene(n_sources=4, size_x=120, size_y=90, s_n=200):
     return clean_gal, gal_image.array, psf_image.array, centers
 
 
-# In[85]:
+# In[90]:
 
 
 # trial run testing ths function
@@ -161,7 +162,7 @@ n_sources = 3
 clean_gal, gal_image, psf_image, centers  = generate_scene(n_sources=n_sources, size_x=120, size_y=90)
 
 
-# In[86]:
+# In[91]:
 
 
 # Create figure for checking
@@ -175,11 +176,11 @@ plt.title('galaxy scene no noise',fontsize=20)
 plt.subplot(1,2,2)
 plt.imshow(gal_image, cmap = cmr.lilac)
 plt.title('galaxy scene with noise',fontsize=20)
-for i in range(n_sources+1):
+for i in range(n_sources):
     plt.text(centers[i][1],centers[i][0],str(i), c='white', fontsize=11)
 
 
-# In[87]:
+# In[ ]:
 
 
 # create a dictionary to save data to disk
